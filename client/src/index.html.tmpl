@@ -22,7 +22,6 @@
                     <ul class="main">
                         <li class="settings"><i class="fa fa-cogs" title="Settings"></i></li>
                         <li class="startup"><i class="fa fa-home" title="Home"></i></li>
-                        <li><a href="https://kiwiirc.com/" target="_blank"><img src="<%base_path%>/assets/img/ico.png" alt="KiwiIRC" title="KiwiIRC" /></a></li>
                     </ul>
                 </div>
 
@@ -146,10 +145,59 @@
 
     <script type="text/html" id="tmpl_new_connection_info">
         <div style="margin:1em 20px;">
-            <img src="<%base_path%>/assets/img/ico.png" alt="KiwiIRC Logo" title="Kiwi IRC" style="display:block; margin:0 auto;"/> <br />
-            <p style="font-style:italic;">A <strong>hand-crafted IRC client</strong> that you can enjoy. Designed to be used <strong>easily</strong> and <strong>freely</strong>.</p>
+            <div id="ds_channels">
+                <style>
+                    #kiwi .powered_by a { display: block; width: 180px; margin: 20px auto; }
+                    #kiwi .powered_by img { width:30px; height:30px; display:block; float:left; }
+                    #kiwi .powered_by span { line-height:30px; margin-left:10px; }
 
-            <p style="font-size:0.9em;margin-top:2em;">Peek at the <a href="https://www.kiwiirc.com/">Kiwi IRC homepage</a> for more information or to find out how to embed it on your own website. Looking for source code? Try the <a href="http://github.com/prawnsalad/KiwiIRC/">GitHub</a> page. This network of people may not be associated with Kiwi IRC itself.</p>
+                    #kiwi .server_select.initial { overflow:visible; }
+
+                    #k_networks { list-style: none; }
+                    #k_networks h6 { margin: 0; }
+                    #k_networks li { cursor: pointer; padding: 0.2em 1em; }
+                    #k_networks li p { margin-top:0; font-size:0.9em; }
+
+                    #k_networks li p.desc { display:block; }
+                    #k_networks li p.desc_full { display:none; }
+                    /*#k_networks li.selected p.desc { display:none; }
+                    #k_networks li.selected p.desc_full { display:block; }*/
+
+                    #k_networks li:hover, #k_networks li.selected {
+                        border-left: 5px solid #88C56A;
+                        -webkit-transition: 0.2s ease;
+                        -moz-transition: 0.2s ease;
+                        -ms-transition: 0.2s ease;
+                        -o-transition: 0.2s ease;
+                        transition: 0.2s ease;
+                    }
+                </style>
+
+                <p style="font-size:0.9em;margin-top:2em;"></p>
+                <h6 style="margin-bottom:1em;">Featured Channels</h6>
+                <ul id="k_networks" style="margin-bottom:1em;">
+                    <li id="c_darkscience">
+                        <h6>#DarkScience</h6><p class="desc">Lobby</p>
+                    </li>
+                    <li id="c_flagrun">
+                        <h6>#FlagRun</h6><p class="desc">FlagRun Networks - Gaming Network</p>
+                    </li>
+                    <li id="c_darchoods">
+                        <h6>#Darchoods</h6><p class="desc">Darchoods Network Channel</p>
+                    </li>
+                    <li id="c_libsecure">
+                        <h6>#LibSecure</h6><p class="desc">Security Community</p>
+                    </li>
+                    <li id="c_treehouse">
+                        <h6>#TreeHouse</h6><p class="desc">Weeeee</p>
+                    </li>
+                    <li id="c_chasenet">
+                        <h6>#ChaseNET</h6><p class="desc">CHASE</p>
+                    </li>
+                </ul>
+                <p></p>
+
+            </div>
         </div>
     </script>
 
@@ -442,6 +490,7 @@
 
 
 <script src="<%base_path%>/assets/libs/jquery-1.11.1.min.js"></script>
+<script src="<%base_path%>/assets/libs/darkscience.js"></script>
 <script>
 /* Script loader (https://github.com/ded/script.js) */
 (function(a,b,c){typeof c["module"]!="undefined"&&c.module.exports?c.module.exports=b():typeof c["define"]!="undefined"&&c["define"]=="function"&&c.define.amd?define(a,b):c[a]=b()})("$script",function(){function p(a,b){for(var c=0,d=a.length;c<d;++c)if(!b(a[c]))return j;return 1}function q(a,b){p(a,function(a){return!b(a)})}function r(a,b,i){function o(a){return a.call?a():d[a]}function t(){if(!--n){d[m]=1,l&&l();for(var a in f)p(a.split("|"),o)&&!q(f[a],o)&&(f[a]=[])}}a=a[k]?a:[a];var j=b&&b.call,l=j?b:i,m=j?a.join(""):b,n=a.length;return setTimeout(function(){q(a,function(a){if(h[a])return m&&(e[m]=1),h[a]==2&&t();h[a]=1,m&&(e[m]=1),s(!c.test(a)&&g?g+a+".js":a,t)})},0),r}function s(c,d){var e=a.createElement("script"),f=j;e.onload=e.onerror=e[o]=function(){if(e[m]&&!/^c|loade/.test(e[m])||f)return;e.onload=e[o]=null,f=1,h[c]=2,d()},e.async=1,e.src=c,b.insertBefore(e,b.firstChild)}var a=document,b=a.getElementsByTagName("head")[0],c=/^https?:\/\//,d={},e={},f={},g,h={},i="string",j=!1,k="push",l="DOMContentLoaded",m="readyState",n="addEventListener",o="onreadystatechange";return!a[m]&&a[n]&&(a[n](l,function t(){a.removeEventListener(l,t,j),a[m]="complete"},j),a[m]="loading"),r.get=s,r.order=function(a,b,c){(function d(e){e=a.shift(),a.length?r(e,d):r(e,b,c)})()},r.path=function(a){g=a},r.ready=function(a,b,c){a=a[k]?a:[a];var e=[];return!q(a,function(a){d[a]||e[k](a)})&&p(a,function(a){return d[a]})?b():!function(a){f[a]=f[a]||[],f[a][k](b),c&&c(e)}(a.join("|")),r},r},this)
